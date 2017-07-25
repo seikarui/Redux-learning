@@ -1,7 +1,7 @@
 
 ## What is redux-saga? What is used for?
 
->When developing front-ends, handling asynchronous behavior is always bit of a challenge. Redux-saga is one solution for these problems.It is a Redux middleware for handling side effects. In Function Programming, the things like Asynchronous and impure are called `side effect`.
+>When developing front-ends, handling asynchronous behavior is always bit of a challenge. Redux-saga is one solution for these problems. It is a Redux middleware for handling side effects. In Function Programming, the things like Asynchronous and impure are called `side effect`.
 
 
 The author of redux-saga said that:
@@ -9,12 +9,33 @@ The author of redux-saga said that:
 >I want to emphasize that you don't actually have to go through academic papers and backend concepts in order to use redux-saga. It's sufficient to know that a saga is a piece of code which runs in the background, watch for dispatched actions, may perform some async calls (or synchronous impure calls like browser storage) and can dispatch other actions to the store.
 
 
->The redux-saga is implemented using the generator functions.(Which shared by dongying last test). Unlike other functions which run completion and return a value. The generator can be easily paused and resumed on demand and can return multi values.
+>The redux-saga is implemented using the generator functions(Which shared by dongying last test). Unlike other functions which run completion and return a value. The generator can be easily paused and resumed on demand and can return multi values.
 
+## Generator
+
+For common functions:
+> once the function starts running, it will always run to completion before any other JS code can run.
+
+For Generator:
+> It may be paused once or may times, and allow other code to run during these paused periods. it pauses itself when it comes across a `yield` commands, and return the value of the yield expression. Although it stopped by itself, but it cannot resume on its own. It must be restarted by an external control.
+
+[example code](https://babeljs.io/repl/#?babili=false&evaluate=true&lineWrap=false&presets=es2015%2Creact%2Cstage-1%2Cstage-2&targets=&browsers=&builtIns=false&debug=false&code_lz=GYVwdgxgLglg9mABAKkRAhgG0wCgJQDeAUIogJ4wCmmAJogIwDcJ5VtiATM6RdXQMzMAvkSIQEAZyiJ0iALxosuPM3FgJcTJQB0mOAHMc6bWEoAPKPhVjJmnXsPHTFq6ttbdBoyfOW81tQ0PB29nP2sgA)
+
+```
+function * call(){
+  yield 1;
+  yield 2;
+  yield 3;
+}
+
+const a = call();
+console.log(a.next());
+console.log(a.next());
+console.log(a.next());
+console.log(a.next());
+```
 
 ## The basic glossary.
-
-
 
 1.Effect:
 
